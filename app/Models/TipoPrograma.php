@@ -8,7 +8,8 @@ class TipoPrograma extends Model
 {
     protected $fillable = [
         'nombre',
-        'categoria'
+        'categoria',
+        'grupo_id',
     ];
 
     public function grupo()
