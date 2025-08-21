@@ -28,8 +28,7 @@ class ProgramasTable extends DataTableComponent
         return [
             Action::make('Crear')
                 ->setIcon('fas fa-plus')
-                ->setWireAction('wire:click')
-                ->setWireActionDispatchParams("'openModal', { component: 'programas.programa-create' }")
+                ->setLink(route('programas.create'))
         ];
     }
 
@@ -64,7 +63,7 @@ class ProgramasTable extends DataTableComponent
                 ->label(
                     fn($row) => <<<HTML
         <div class="space-x-2">
-            <button class="btn  btn-primary" wire:click="editar({$row->id})" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem"><span class="fas fa-edit"></span> Editar</button>
+            <a class="btn  btn-primary" href="{{ route('programas.edit', {$row->id}) }}" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem"><span class="fas fa-edit"></span> Editar</a>
             <button class="btn  btn-danger " wire:click="eliminar({$row->id})" wire:confirm="Seguro quieres eliminar?" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem"><span class="fas fa-trash-alt"></span> Eliminar</button>
         </div>
         HTML
@@ -79,10 +78,7 @@ class ProgramasTable extends DataTableComponent
         return Programa::query();
     }
 
-    public function editar($id)
-    {
-        $this->dispatch('openModal',  'programas.programa-edit',["id" => $id]);
-    }
+    // Navegación directa en lugar de modal; método no necesario
 
     public function eliminar($id)
     {
