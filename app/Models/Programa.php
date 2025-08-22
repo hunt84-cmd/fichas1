@@ -7,13 +7,29 @@ use Illuminate\Database\Eloquent\Model;
 class Programa extends Model
 {
     protected $fillable = [
+        'habilitado',
         'nombre',
+        'objetivo',
+        'descripcion',
+        'creacion',
         'origen',
         'dias',
+        'porciento_musica',
+        'inicio',
+        'final',
+        'emisora_id',
+        'funcion_id',
+        'tipo_id',
+        'tema',
+        'especificacion',
+        'destinatario',
+        'tiempo_aproximado',
+        'vivo',
     ];
     protected $casts = [
         'porciento_musica' => 'array',
         'dias' => 'array',
+        'tiempo_aproximado' => 'array',
     ];
 
     public function emisora()

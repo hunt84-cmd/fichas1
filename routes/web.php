@@ -20,6 +20,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/tipo_guiones', \App\Livewire\TipoGuionesTable::class)->name('tipo_guiones')->middleware('role:ROLE_ADMIN');
     Route::get('/clasificaciones', \App\Livewire\ClasificacionesTable::class)->name('clasificaciones')->middleware('role:ROLE_ADMIN');
     Route::get('/programas', \App\Livewire\ProgramasTable::class)->name('programas')->middleware('role:ROLE_ADMIN');
+    Route::get('/programas/create', \App\Livewire\Programas\ProgramaCreatePage::class)->name('programas.create')->middleware('role:ROLE_ADMIN');
+    Route::get('/programas/{id}/edit', \App\Livewire\Programas\ProgramaEditPage::class)->name('programas.edit')->middleware('role:ROLE_ADMIN');
 
     Route::get('/grupos',\App\Livewire\Grupos\GrupoIndex::class)->name('grupos.index')->middleware('role:ROLE_ADMIN');
     Route::get('/grupos/create',\App\Livewire\Grupos\GrupoCreate::class)->name('grupos.create')->middleware('role:ROLE_ADMIN');
